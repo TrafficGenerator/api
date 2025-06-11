@@ -13,8 +13,14 @@ window.addEventListener('load', () => {
   // List of potential JSON sources for target URLs
   const urlJsonSources = [
     "https://trafficgenerator.github.io/urls/urls-1.json",
-    "https://traffic-exchange.github.io/urls/urls-2.json",
-    "https://traffic-exchange.github.io/urls/urls-3.json"
+    "https://trafficgenerator.github.io/urls/urls-2.json",
+    "https://trafficgenerator.github.io/urls/urls-3.json",
+    "https://trafficgenerator.github.io/urls/urls-4.json",
+    "https://trafficgenerator.github.io/urls/urls-5.json",
+    "https://trafficgenerator.github.io/urls/urls-6.json",
+    "https://trafficgenerator.github.io/urls/urls-7.json",
+    "https://trafficgenerator.github.io/urls/urls-8.json",
+    "https://trafficgenerator.github.io/urls/urls-9.json"
   ];
 
   const iframes = [];
