@@ -1,30 +1,34 @@
-/* Reset some default styles and remove Blogger theme margins */
-   html, body {
-   margin: 0;
-   padding: 0;
-   height: 100%;
-   overflow: hidden;
-   }
-   /* Ensure any Blogger wrapper elements also have full height */
-   #outer-wrapper, .main {
-   height: 100%;
-   margin: 0;
-   padding: 0;
-   }
-   /* Fullscreen iframe styling */
-   #fullIframe,
-   .full-iframe {
-   display: block;
-   border: none;
-   width: 100%;
-   height: 100%;
-   }
-   .hidden-iframe {
-   width: 1px;
-   height: 1px;
-   opacity: 0;
-   position: absolute;
-   top: -1000px; /* Move off-screen */
-   left: -1000px;
-   pointer-events: none;
+html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      #container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      #fullIframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      #clickCatcher {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        cursor: pointer;
+      }
+     .hidden-iframe {
+     width: 1px;
+     height: 1px;
+     opacity: 0;
+     position: absolute;
+     top: -1000px; /* Move off-screen */
+     left: -1000px;
+     pointer-events: none;
    }
