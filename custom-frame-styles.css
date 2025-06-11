@@ -31,4 +31,5 @@ html, body {
      top: -1000px; /* Move off-screen */
      left: -1000px;
      pointer-events: none;
+    border: none;
    }
