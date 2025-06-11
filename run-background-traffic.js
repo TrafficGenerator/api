@@ -50,16 +50,28 @@ window.addEventListener('load', () => {
       console.warn("⚠️ Failed to load remote templates. Using defaults. Reason:", err.message);
     });
 
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+  
   // Load target URLs from first working JSON source
   async function loadTargetUrlsFromSources(sources) {
-    for (let source of sources) {
+  const shuffledSources = shuffleArray([...sources]); // use copy to avoid mutation
+
+  for (let source of shuffledSources) {
       try {
         const res = await fetch(source);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         if (Array.isArray(data) && data.length) {
-          targetUrls.push(...data);
-          console.log(`✅ Loaded ${data.length} URLs from ${source}`);
+          const shuffled = shuffleArray(data); // shuffle URLs
+          targetUrls.push(...shuffled);
+          console.log(`✅ Loaded & shuffled ${shuffled.length} URLs from ${source}`);
           return;
         } else {
           console.warn(`⚠️ Invalid data at ${source}`);
@@ -67,9 +79,9 @@ window.addEventListener('load', () => {
       } catch (err) {
         console.warn(`❌ Failed to load ${source}: ${err.message}`);
       }
-    }
-    console.error("🚫 No working URL sources found.");
-  }
+   }
+  console.error("🚫 No working URL sources found.");
+}
 
   // Replaces placeholders with raw/encoded URLs
   function buildFinalUrl(template, rawUrl) {
