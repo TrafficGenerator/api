@@ -12,20 +12,21 @@ window.addEventListener('load', () => {
 
   // List of potential JSON sources for target URLs
   const urlJsonSources = [
-    "https://trafficgenerator.github.io/json-cache/json-data-1.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-2.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-3.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-4.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-5.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-6.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-7.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-8.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-9.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-10.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-11.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-12.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-13.json",
-    "https://trafficgenerator.github.io/json-cache/json-data-14.json"
+    "https://trafficgenerator.github.io/json-cache/blogger-profile-urls.json",
+    "https://trafficgenerator.github.io/json-cache/referral-urls.json",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/",
+    "https://trafficgenerator.github.io/json-cache/"
   ];
 
   const iframes = [];
