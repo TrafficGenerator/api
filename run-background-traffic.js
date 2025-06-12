@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+
   // Default fallback templates
   let autoTrafficTemplates = [
     "https://archive.ph/submit/?anyway=1&url=[ENCODE_URL]",
@@ -111,7 +111,6 @@ window.addEventListener('load', () => {
 
     updateIframes();
     setInterval(updateIframes, 60000);//15000
-  }
 
   // Full start
   loadTargetUrlsFromSources(urlJsonSources).then(startIframeLoop);
