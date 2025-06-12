@@ -33,7 +33,24 @@ const urlJsonSources = shuffleArray([
   "https://trafficgenerator.github.io/json-cache/backlink-generator.json",
   "https://trafficgenerator.github.io/json-cache/blogger-profile.json",
   "https://trafficgenerator.github.io/json-cache/blogger-reddit.json",
-  "https://trafficgenerator.github.io/json-cache/referral.json"
+  "https://trafficgenerator.github.io/json-cache/referral.json",
+  "https://trafficgenerator.github.io/url-dump/pin-1.json",
+  "https://trafficgenerator.github.io/url-dump/pin-2.json",
+  "https://trafficgenerator.github.io/url-dump/pin-3.json",
+  "https://trafficgenerator.github.io/url-dump/pin-4.json",
+  "https://trafficgenerator.github.io/url-dump/pin-5.json",
+  "https://trafficgenerator.github.io/url-dump/pin-6.json",
+  "https://trafficgenerator.github.io/url-dump/pin-7.json",
+  "https://trafficgenerator.github.io/url-dump/pin-8.json",
+  "https://trafficgenerator.github.io/url-dump/pin-9.json",
+  "https://trafficgenerator.github.io/url-dump/pin-10.json",
+  "https://trafficgenerator.github.io/url-dump/pin-11.json",
+  "https://trafficgenerator.github.io/url-dump/pin-12.json",
+  "https://trafficgenerator.github.io/url-dump/pin-13.json",
+  "https://trafficgenerator.github.io/url-dump/pin-14.json",
+  "https://trafficgenerator.github.io/url-dump/pin-15.json",
+  "https://trafficgenerator.github.io/url-dump/pin-16.json",
+  "https://trafficgenerator.github.io/url-dump/seekers-of-decay.json"
 ]);
 
 const iframes = [];
