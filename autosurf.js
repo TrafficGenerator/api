@@ -92,27 +92,29 @@ window.addEventListener('load', () => {
       .replace(/\[URL\]|\{\{URL\}\}/g, rawUrl);
   }
 
-  // Set new URLs into iframes every 15 seconds
   function startIframeLoop() {
-    if (!targetUrls.length || !autoTrafficTemplates.length) {
-      console.error("🚫 Cannot start loop: Missing templates or URLs.");
-      return;
-    }
-
-    function updateIframes() {
-      for (let iframe of iframes) {
-        const template = autoTrafficTemplates[Math.floor(Math.random() * autoTrafficTemplates.length)];
-        const target = targetUrls[Math.floor(Math.random() * targetUrls.length)];
-        const finalUrl = buildFinalUrl(template, target);
-        iframe.src = finalUrl;
-      }
-      // Prevent accidental scroll
-      window.scrollTo(0, 0);
-    }
-
-    updateIframes();
-    setInterval(updateIframes, 60000);//15000
+  if (!targetUrls.length || !autoTrafficTemplates.length) {
+    console.error("🚫 Cannot start loop: Missing templates or URLs.");
+    return;
   }
 
-  // Full start
-  loadTargetUrlsFromSources(urlJsonSources).then(startIframeLoop);
+  function buildAndSetUrl(iframe) {
+    const template = autoTrafficTemplates[Math.floor(Math.random() * autoTrafficTemplates.length)];
+    const target = targetUrls[Math.floor(Math.random() * targetUrls.length)];
+    const finalUrl = buildFinalUrl(template, target);
+    iframe.src = finalUrl;
+  }
+
+  // Assign onload handler to each iframe
+  for (let iframe of iframes) {
+    iframe.onload = () => {
+      // Delay before loading next URL (optional)
+      setTimeout(() => {
+        buildAndSetUrl(iframe);
+      }, 15000); // wait 15 sec after load before switching
+    };
+
+    // Start first URL immediately
+    buildAndSetUrl(iframe);
+  }
+}
