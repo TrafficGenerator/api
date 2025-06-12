@@ -25,7 +25,7 @@ let autoTrafficTemplates = [
 // Template and URL sources to shuffle and try in random order
 const templatesJsonSources = shuffleArray([
   "https://trafficgenerator.github.io/api/traffic-templates.json",
-  "https://traffic-exchange.github.io/api/auto-traffic.json"
+  "https://trafficgenerator.github.io/templates/custom-templates.json"
 ]);
 
 const urlJsonSources = shuffleArray([
