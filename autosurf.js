@@ -1,6 +1,3 @@
-
-// autosurf.js
-
 // Utility: Fisher-Yates shuffle
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -25,7 +22,12 @@ let autoTrafficTemplates = [
   "http://archive.today/[ENCODE_URL]"
 ];
 
-// URL sources to shuffle and try in random order
+// Template and URL sources to shuffle and try in random order
+const templatesJsonSources = shuffleArray([
+  "https://trafficgenerator.github.io/api/traffic-templates.json",
+  "https://traffic-exchange.github.io/api/auto-traffic.json"
+]);
+
 const urlJsonSources = shuffleArray([
   "https://trafficgenerator.github.io/json-cache/autosurf-domains.json",
   "https://trafficgenerator.github.io/json-cache/backlink-generator.json",
@@ -46,40 +48,26 @@ for (let i = 0; i < 15; i++) {
   iframes.push(iframe);
 }
 
-// Try fetching templates (but no delay if it fails)
-fetch('https://trafficgenerator.github.io/api/traffic-templates.json')
-  .then(res => res.ok ? res.json() : Promise.reject("Template fetch failed"))
-  .then(data => {
-    if (Array.isArray(data) && data.length) {
-      autoTrafficTemplates = data;
-      console.log("✅ Templates loaded from remote.");
-    }
-  })
-  .catch(err => {
-    console.warn("⚠️ Using default templates. Reason:", err.message);
-  });
-
-// Fetch target URLs from first working JSON
-async function loadTargetUrlsFromSources(sources) {
-  for (let source of sources) {
+// Generic JSON loader with auto-retry for first valid array response
+async function loadFirstValidArrayFromSources(sources, label) {
+  const shuffledSources = shuffleArray([...sources]);
+  for (let source of shuffledSources) {
     try {
       const res = await fetch(source);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       if (Array.isArray(data) && data.length) {
-        const shuffled = shuffleArray(data);
-        targetUrls.push(...shuffled);
-        console.log(`✅ Loaded & shuffled ${shuffled.length} URLs from ${source}`);
-        return;
+        console.log(`✅ Loaded & shuffled ${data.length} ${label} from ${source}`);
+        return shuffleArray(data);
       } else {
-        console.warn(`⚠️ Invalid data at ${source}`);
+        console.warn(`⚠️ Invalid ${label} at ${source}`);
       }
     } catch (err) {
-      console.warn(`❌ Failed to load ${source}: ${err.message}`);
+      console.warn(`❌ Failed to load ${label} from ${source}: ${err.message}`);
     }
   }
-
-  console.error("🚫 No working URL sources found.");
+  console.error(`🚫 No working ${label} sources found.`);
+  return [];
 }
 
 // Replaces placeholders with raw and encoded URLs
@@ -90,7 +78,7 @@ function buildFinalUrl(template, rawUrl) {
     .replace(/\[URL\]|\{\{URL\}\}/g, rawUrl);
 }
 
-// Start iframe loop when URLs are ready
+// Start iframe loop when data is ready
 function startIframeLoop() {
   if (!targetUrls.length || !autoTrafficTemplates.length) {
     console.error("🚫 Cannot start loop: Missing templates or URLs.");
@@ -110,11 +98,19 @@ function startIframeLoop() {
         buildAndSetUrl(iframe);
       }, 15000); // wait 15 sec after load
     };
-
-    // Initial load
-    buildAndSetUrl(iframe);
+    buildAndSetUrl(iframe); // initial load
   }
 }
 
-// Start everything
-loadTargetUrlsFromSources(urlJsonSources).then(startIframeLoop);
+// Load both templates and URLs, then start loop
+(async () => {
+  const [templates, urls] = await Promise.all([
+    loadFirstValidArrayFromSources(templatesJsonSources, 'templates'),
+    loadFirstValidArrayFromSources(urlJsonSources, 'target URLs')
+  ]);
+
+  if (templates.length) autoTrafficTemplates = templates;
+  if (urls.length) targetUrls.push(...urls);
+
+  startIframeLoop();
+})();
