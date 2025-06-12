@@ -17,9 +17,11 @@ window.addEventListener('load', () => {
 
   // List of potential JSON sources for target URLs
   const urlJsonSources = [
-    "https://trafficgenerator.github.io/json-cache/blogger-profile-urls.json",
-    "https://trafficgenerator.github.io/json-cache/referral-urls.json",
-    "https://trafficgenerator.github.io/json-cache/autosurf-domains.json"
+    "https://trafficgenerator.github.io/json-cache/autosurf-domains.json",
+    "https://trafficgenerator.github.io/json-cache/backlink-generator.json",
+    "https://trafficgenerator.github.io/json-cache/blogger-profile.json",
+    "https://trafficgenerator.github.io/json-cache/blogger-reddit.json",
+    "https://trafficgenerator.github.io/json-cache/referral.json"
   ];
 
   const iframes = [];
