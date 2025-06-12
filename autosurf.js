@@ -6,8 +6,13 @@ window.addEventListener('load', () => {
     "https://web.archive.org/save/[URL]",
     "https://web.archive.org/web/[URL]",
     "https://web.archive.org/web/*/[URL]",
+    "https://archive.ph/?run=1&url=[ENCODE_URL]",
     "https://archive.today/?run=1&url=[ENCODE_URL]",
-    "https://archive.ph/submit/?url=[ENCODE_URL]"
+    "https://archive.ph/submit/?anyway=1&url=[ENCODE_URL]",
+    "https://archive.today/submit/?anyway=1&url=[ENCODE_URL]",
+    "https://archive.ph/[ENCODE_URL]",
+    "http://archive.today/[ENCODE_URL]"
+    
   ];
 
   // List of potential JSON sources for target URLs
