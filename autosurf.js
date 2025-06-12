@@ -114,4 +114,3 @@ window.addEventListener('load', () => {
 
   // Full start
   loadTargetUrlsFromSources(urlJsonSources).then(startIframeLoop);
-});
