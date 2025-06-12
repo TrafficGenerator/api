@@ -14,19 +14,7 @@ window.addEventListener('load', () => {
   const urlJsonSources = [
     "https://trafficgenerator.github.io/json-cache/blogger-profile-urls.json",
     "https://trafficgenerator.github.io/json-cache/referral-urls.json",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/",
-    "https://trafficgenerator.github.io/json-cache/"
+    "https://trafficgenerator.github.io/json-cache/autosurf-domains.json"
   ];
 
   const iframes = [];
